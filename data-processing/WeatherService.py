@@ -15,7 +15,7 @@ limiter = Limiter(get_remote_address, app=app, default_limits=["10 per minute"])
 
 CACHE_FILE = "weather_cache.json"
 
-HEADERS = {"User-Agent": "WeatherAPI (waersland@live.no)"}
+HEADERS = {"User-Agent": os.getenv("USER_AGENT")}
 
 
 def get_cached_data(location, data_type):
