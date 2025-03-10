@@ -1,14 +1,18 @@
 import os
 import psycopg2
 import json
+from dotenv import load_dotenv
 
+load_dotenv()  # Load environment variables
 # Database connection settings
 ### Move these to environment variables in production###
-DB_NAME = "weather_db"
-DB_USER = "admin"
-DB_PASSWORD = "secret"
-DB_HOST = "localhost"
-DB_PORT = "5432"
+
+DB_USER = os.getenv("POSTGRES_USER")
+DB_PASSWORD = os.getenv("POSTGRES_PASSWORD")
+USER_AGENT = os.getenv("USER_AGENT")
+DB_HOST = os.getenv("POSTGRES_HOST")
+DB_PORT = os.getenv("POSTGRES_PORT")
+DB_NAME = os.getenv("POSTGRES_DB")
 
 def connect_db():
     """ Establishes a connection to the PostgreSQL database. """
