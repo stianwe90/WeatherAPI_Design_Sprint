@@ -6,10 +6,11 @@ The project is divided into two main components:
 
 Data Ingestion & Processing (Python):
 
-Retrieves current weather data and forecast information (in JSON/XML formats) from api.met.no.
+Retrieves current weather data and forecast information (in JSON formats) from api.met.no.
 Handles API access according to api.met.no guidelines, including setting a valid User-Agent header.
 Stores raw data locally in JSON format with an option to convert to Parquet for optimized querying.
 Extracts key weather attributes (e.g., temperature, humidity, wind speed).
+Converts attributes and stores in a PostgreSQL database located on a local docker instance
 
 REST API (C#):
 
