@@ -45,3 +45,4 @@ C:\Users\StianWærsland\Documents\GitHub\TM\WeatherAPI_Design_Sprint\WeatherAPI\
 C:\Users\StianWærsland\Documents\GitHub\TM\WeatherAPI_Design_Sprint\WeatherAPI\obj\Debug\net8.0\WeatherAPI.pdb
 C:\Users\StianWærsland\Documents\GitHub\TM\WeatherAPI_Design_Sprint\WeatherAPI\obj\Debug\net8.0\WeatherAPI.genruntimeconfig.cache
 C:\Users\StianWærsland\Documents\GitHub\TM\WeatherAPI_Design_Sprint\WeatherAPI\obj\Debug\net8.0\ref\WeatherAPI.dll
+C:\Users\StianWærsland\Documents\GitHub\TM\WeatherAPI_Design_Sprint\WeatherAPI\obj\Debug\net8.0\WeatherAPI.sourcelink.json

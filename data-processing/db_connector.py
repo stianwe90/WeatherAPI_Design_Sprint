@@ -1,40 +1,48 @@
 import os
-import psycopg2
 import json
+import psycopg2
+from psycopg2 import pool
 from dotenv import load_dotenv
 
 load_dotenv()  # Load environment variables
-# Database connection settings
-### Move these to environment variables in production###
 
 DB_USER = os.getenv("POSTGRES_USER")
 DB_PASSWORD = os.getenv("POSTGRES_PASSWORD")
-USER_AGENT = os.getenv("USER_AGENT")
-DB_HOST = os.getenv("POSTGRES_HOST")
-DB_PORT = os.getenv("POSTGRES_PORT")
+DB_HOST = os.getenv("POSTGRES_HOST", "127.0.0.1")
+DB_PORT = os.getenv("POSTGRES_PORT", 5432)
 DB_NAME = os.getenv("POSTGRES_DB")
 
-def connect_db():
-    """ Establishes a connection to the PostgreSQL database. """
+# Instantiate the connection pool when this module is imported.
+db_pool = pool.SimpleConnectionPool(
+    minconn=1,
+    maxconn=10,
+    dbname=DB_NAME,
+    user=DB_USER,
+    password=DB_PASSWORD,
+    host=DB_HOST,
+    port=DB_PORT
+)
+
+def get_db_connection():
+    """Retrieve a connection from the pool."""
     try:
-        conn = psycopg2.connect(
-            dbname=DB_NAME,
-            user=DB_USER,
-            password=DB_PASSWORD,
-            host=DB_HOST,
-            port=DB_PORT
-        )
-        return conn
+        return db_pool.getconn()
     except Exception as e:
-        print(f"Database connection failed: {e}")
+        print(f"Failed to get connection: {e}")
         return None
 
+def release_db_connection(conn):
+    """Return a connection to the pool."""
+    try:
+        db_pool.putconn(conn)
+    except Exception as e:
+        print(f"Failed to release connection: {e}")
+
 def insert_weather_data(location, weather_json):
-    """ Inserts weather data into the database. """
-    conn = connect_db()
+    """Insert weather data using a pooled connection."""
+    conn = get_db_connection()
     if not conn:
         return
-    
     try:
         cursor = conn.cursor()
         cursor.execute(
@@ -50,4 +58,4 @@ def insert_weather_data(location, weather_json):
     except Exception as e:
         print(f"Error inserting data: {e}")
     finally:
-        conn.close()
+        release_db_connection(conn)

@@ -1,0 +1,28 @@
+import psycopg2
+import os
+from dotenv import load_dotenv
+
+load_dotenv()  # Make sure your .env file is in the current directory
+
+DB_USER = os.getenv("POSTGRES_USER")
+DB_PASSWORD = os.getenv("POSTGRES_PASSWORD")
+DB_HOST = "127.0.0.1"
+DB_PORT = os.getenv("POSTGRES_PORT", 5432)
+DB_NAME = os.getenv("POSTGRES_DB")
+
+try:
+    conn = psycopg2.connect(
+        dbname=DB_NAME,
+        user=DB_USER,
+        password=DB_PASSWORD,
+        host=DB_HOST,
+        port=DB_PORT
+    )
+    print("Database connection successful!")
+    cur = conn.cursor()
+    cur.execute("SELECT location, timestamp FROM weather_data;")
+    print("Current time:", cur.fetchone())
+    cur.close()
+    conn.close()
+except Exception as e:
+    print("Database connection failed:", e)
