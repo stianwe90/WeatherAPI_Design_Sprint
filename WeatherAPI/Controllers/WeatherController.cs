@@ -28,18 +28,18 @@ public class WeatherController : ControllerBase
         return Content(data, "application/json");
     }
 
-    [HttpGet("forecast")]
-    public async Task<IActionResult> GetForecastWeather([FromQuery] string location, [FromQuery] int days = 5)
-    {
-        if (string.IsNullOrEmpty(location))
-            return BadRequest("Location is required");
+    // [HttpGet("forecast")]
+    // public async Task<IActionResult> GetForecastWeather([FromQuery] string location, [FromQuery] int days = 5)
+    // {
+    //     if (string.IsNullOrEmpty(location))
+    //         return BadRequest("Location is required");
 
-        var response = await _httpClient.GetAsync($"http://localhost:5001/weather/forecast?location={location}&days={days}");
+    //     var response = await _httpClient.GetAsync($"http://localhost:5001/weather/forecast?location={location}&days={days}");
 
-        if (!response.IsSuccessStatusCode)
-            return BadRequest("Error fetching forecast data");
+    //     if (!response.IsSuccessStatusCode)
+    //         return BadRequest("Error fetching forecast data");
 
-        var data = await response.Content.ReadAsStringAsync();
-        return Content(data, "application/json");
-    }
+    //     var data = await response.Content.ReadAsStringAsync();
+    //     return Content(data, "application/json");
+    // }
 }

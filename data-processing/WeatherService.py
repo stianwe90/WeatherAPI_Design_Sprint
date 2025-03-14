@@ -2,10 +2,11 @@ import json
 import os
 import time
 import requests
+import logging as logger
 from flask import Flask, request, jsonify
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
-from db_connector import insert_weather_data
+from db_connector import insert_weather_data, get_recent_data
 from dotenv import load_dotenv
 
 load_dotenv()  # Load environment variables
@@ -13,43 +14,9 @@ load_dotenv()  # Load environment variables
 app = Flask(__name__)
 limiter = Limiter(get_remote_address, app=app, default_limits=["10 per minute"])
 
-CACHE_FILE = "weather_cache.json"
+# CACHE_FILE = "weather_cache.json"
 
 HEADERS = {"User-Agent": os.getenv("USER_AGENT")}
-
-
-def get_cached_data(location, data_type):
-    """ Check cache before making API call """
-    try:
-        with open(CACHE_FILE, "r") as f:
-            cache = json.load(f)
-            if location in cache and data_type in cache[location]:
-                # Check if data is less than 10 min old
-                if time.time() - cache[location][data_type]["timestamp"] < 600:
-                    return cache[location][data_type]["data"]
-    except FileNotFoundError:
-        pass  # Cache file does not exist
-    return None  # No valid cache found
-
-# Saves a copy of the latest weather data in a JSON file for caching
-def save_cache(location, data_type, data):
-    """ Save weather data in cache """
-    try:
-        with open(CACHE_FILE, "r") as f:
-            cache = json.load(f)
-    except FileNotFoundError:
-        cache = {}
-
-    if location not in cache:
-        cache[location] = {}
-
-    cache[location][data_type] = {
-        "data": data,
-        "timestamp": time.time()
-    }
-
-    with open(CACHE_FILE, "w") as f:
-        json.dump(cache, f)
 
 # Returns the latitude and longitude of a city based on city name
 def get_coordinates(city):
@@ -65,31 +32,43 @@ def get_coordinates(city):
 @app.route("/weather/current", methods=["GET"])
 @limiter.limit("10 per minute")
 def current_weather():
-    """ Fetch current weather from API or cache """
+    """Fetch current weather from API or DB cache."""
     location = request.args.get("location")
     if not location:
+        logger.warning("Location parameter missing in request.")
         return jsonify({"error": "Location is required"}), 400
 
+    logger.info("Received current weather request for location: %s", location)
     lat, lon = get_coordinates(location)
     if not lat or not lon:
+        logger.warning("Invalid location provided: %s", location)
         return jsonify({"error": "Invalid location"}), 400
 
-    cached_data = get_cached_data(location, "current")
+    cached_data = get_recent_data(location)
     if cached_data:
+        logger.info("Returning cached data for location: %s", location)
         return jsonify(cached_data)
 
     url = f"https://api.met.no/weatherapi/locationforecast/2.0/compact?lat={lat}&lon={lon}"
-    response = requests.get(url, headers=HEADERS)
-    if response.status_code != 200:
-        return jsonify({"error": "Failed to fetch data"}), response.status_code
+    try:
+        response = requests.get(url, headers=HEADERS)
+        response.raise_for_status()
+    except Exception as e:
+        logger.exception("Failed to fetch data from api.met.no for location: %s", location)
+        return jsonify({"error": "Failed to fetch data"}), 500
 
     weather_data = response.json()
-    save_cache(location, "current", weather_data)
-    
-     # Store in PostgreSQL
-    insert_weather_data(location, weather_data)
-    
+    logger.info("Fetched new weather data for location: %s", location)
+
+    # Store in PostgreSQL
+    try:
+        insert_weather_data(location, weather_data)
+    except Exception as e:
+        logger.exception("Failed to insert weather data into DB for location: %s", location)
+        # Depending on your needs, you might return an error or simply log it and continue
+
     return jsonify(weather_data)
+
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=5001)
