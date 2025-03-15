@@ -1,17 +1,23 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using WeatherAPI.Services;
 using System.Net.Http;
 using System.Threading.Tasks;
 
+
 [ApiController]
+// [Authorize]
 [Route("weather")]
 public class WeatherController : ControllerBase
 {
-    private readonly HttpClient _httpClient;
+    private readonly IWeatherService _weatherService;
 
-    public WeatherController(IHttpClientFactory httpClientFactory)
+    public WeatherController(IWeatherService weatherService)
     {
-        _httpClient = httpClientFactory.CreateClient();
+        _weatherService = weatherService;
     }
+
+
 
     [HttpGet("current")]
     public async Task<IActionResult> GetCurrentWeather([FromQuery] string location)
@@ -19,13 +25,12 @@ public class WeatherController : ControllerBase
         if (string.IsNullOrEmpty(location))
             return BadRequest("Location is required");
 
-        var response = await _httpClient.GetAsync($"http://localhost:5001/weather/current?location={location}");
+        var weather = await _weatherService.GetCurrentWeather(location);
+        if (weather == null)
+            return NotFound("Warning, weather data not found");
 
-        if (!response.IsSuccessStatusCode)
-            return BadRequest("Error fetching weather data");
+        return Ok(weather);
 
-        var data = await response.Content.ReadAsStringAsync();
-        return Content(data, "application/json");
     }
 
     // [HttpGet("forecast")]
@@ -42,4 +47,6 @@ public class WeatherController : ControllerBase
     //     var data = await response.Content.ReadAsStringAsync();
     //     return Content(data, "application/json");
     // }
+
+    // 
 }

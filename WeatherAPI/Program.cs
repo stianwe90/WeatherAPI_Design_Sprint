@@ -1,3 +1,5 @@
+using WeatherAPI.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
@@ -10,6 +12,12 @@ builder.Services.AddCors(options =>
                         .WithHeaders("Content-Type"));
 
 });
+// singleton, scoped, transient
+// singleton: one instance for the lifetime of the application
+// scoped: one instance for the lifetime of the request
+// transient: one instance for each time it is requested
+
+builder.Services.AddScoped<IWeatherService, WeatherService>(); // Register WeatherService
 
 var app = builder.Build();
 

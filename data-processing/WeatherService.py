@@ -25,6 +25,7 @@ def get_coordinates(city):
     response = requests.get(url, headers=HEADERS)
     if response.status_code == 200 and response.json():
         data = response.json()[0]
+        logger.info("Coordinates for city %s: %s, %s", city, data["lat"], data["lon"])
         return data["lat"], data["lon"]
     return None, None
 

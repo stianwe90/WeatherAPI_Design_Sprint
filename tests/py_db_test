@@ -2,7 +2,7 @@ import psycopg2
 import os
 from dotenv import load_dotenv
 import logging as logger
-
+## 
 load_dotenv()  # Make sure your .env file is in the current directory
 
 DB_USER = os.getenv("POSTGRES_USER")
