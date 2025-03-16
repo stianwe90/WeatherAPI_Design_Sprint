@@ -21,7 +21,7 @@ try:
     )
     print("Database connection successful!")
     cur = conn.cursor()
-    cur.execute("SELECT location, timestamp FROM weather_data;")
+    cur.execute("SELECT * FROM weather_data;")
     print("Current time:", cur.fetchone())
     cur.close()
     conn.close()
