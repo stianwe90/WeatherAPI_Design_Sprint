@@ -1,8 +1,12 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAPI", "WeatherAPI\WeatherAPI.csproj", "{A3906CE0-E2EF-98EE-A96A-75AF48E9F4E1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0592F4DA-36E6-4B54-B9CD-BB03A4C56D4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAPI.Tests", "tests\WeatherAPI.Tests\WeatherAPI.Tests.csproj", "{9ADA12E3-C135-46B8-9DCB-0285FE777350}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,11 +18,22 @@ Global
 		{A3906CE0-E2EF-98EE-A96A-75AF48E9F4E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3906CE0-E2EF-98EE-A96A-75AF48E9F4E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3906CE0-E2EF-98EE-A96A-75AF48E9F4E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D8147ED-3081-4361-8367-B9A7AD20C6B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D8147ED-3081-4361-8367-B9A7AD20C6B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D8147ED-3081-4361-8367-B9A7AD20C6B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D8147ED-3081-4361-8367-B9A7AD20C6B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9ADA12E3-C135-46B8-9DCB-0285FE777350}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ADA12E3-C135-46B8-9DCB-0285FE777350}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ADA12E3-C135-46B8-9DCB-0285FE777350}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ADA12E3-C135-46B8-9DCB-0285FE777350}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3924F447-0FE3-4081-A7AC-0896DB62D1F6}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9ADA12E3-C135-46B8-9DCB-0285FE777350} = {0592F4DA-36E6-4B54-B9CD-BB03A4C56D4C}
 	EndGlobalSection
 EndGlobal

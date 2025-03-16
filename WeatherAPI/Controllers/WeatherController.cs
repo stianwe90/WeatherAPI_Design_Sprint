@@ -4,6 +4,7 @@ using WeatherAPI.Services;
 using System.Net.Http;
 using System.Threading.Tasks;
 
+namespace WeatherAPI.Controllers;
 
 [ApiController]
 // [Authorize]

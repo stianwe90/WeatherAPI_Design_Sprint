@@ -1,0 +1,8 @@
+c:\Users\Waers\OneDrive\Dokumenter\GitHub\WeatherAPI_Design_Sprint\tests\WeatherAPI.Tests\bin\Debug\net8.0\CoverletSourceRootsMapping_WeatherAPI.Tests
+c:\Users\Waers\OneDrive\Dokumenter\GitHub\WeatherAPI_Design_Sprint\tests\WeatherAPI.Tests\obj\Debug\net8.0\WeatherAPI.Tests.csproj.AssemblyReference.cache
+c:\Users\Waers\OneDrive\Dokumenter\GitHub\WeatherAPI_Design_Sprint\tests\WeatherAPI.Tests\obj\Debug\net8.0\MvcTestingAppManifest.json
+c:\Users\Waers\OneDrive\Dokumenter\GitHub\WeatherAPI_Design_Sprint\tests\WeatherAPI.Tests\obj\Debug\net8.0\WeatherAPI.Tests.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\Waers\OneDrive\Dokumenter\GitHub\WeatherAPI_Design_Sprint\tests\WeatherAPI.Tests\obj\Debug\net8.0\WeatherAPI.Tests.AssemblyInfoInputs.cache
+c:\Users\Waers\OneDrive\Dokumenter\GitHub\WeatherAPI_Design_Sprint\tests\WeatherAPI.Tests\obj\Debug\net8.0\WeatherAPI.Tests.AssemblyInfo.cs
+c:\Users\Waers\OneDrive\Dokumenter\GitHub\WeatherAPI_Design_Sprint\tests\WeatherAPI.Tests\obj\Debug\net8.0\WeatherAPI.Tests.csproj.CoreCompileInputs.cache
+c:\Users\Waers\OneDrive\Dokumenter\GitHub\WeatherAPI_Design_Sprint\tests\WeatherAPI.Tests\obj\Debug\net8.0\WeatherAPI.Tests.sourcelink.json
