@@ -12,7 +12,7 @@ builder.Services.AddCors(options =>
 
 });
 
-var baseUrl = builder.Configuration["WeatherApi:BaseUrl"];
+var baseUrl = builder.Configuration["WeatherApi:BaseUrl"]; // http://localhost:5001
 if (string.IsNullOrWhiteSpace(baseUrl))
 {
     throw new InvalidOperationException("Missing WeatherApi BaseUrl in configuration.");

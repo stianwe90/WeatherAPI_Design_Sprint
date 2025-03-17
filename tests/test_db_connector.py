@@ -24,5 +24,4 @@ def test_get_db_connection(dummy_db_connector): # uses the dummy_db_connector an
     conn = dummy_db_connector.get_db_connection()
     assert conn == "dummy_connection"
 
-# insert weather data test
 

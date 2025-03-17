@@ -14,9 +14,15 @@ load_dotenv()  # Load environment variables
 app = Flask(__name__)
 limiter = Limiter(get_remote_address, app=app, default_limits=["10 per minute"])
 
-# Create a DBconnector instance
-db_connector = create_db_connector()
+#logging configuration
+logger.basicConfig(level=os.getenv("LOGLEVEL", "INFO"))
 
+# Create a DBconnector instance
+# Class for connecting to the database
+db_connector = create_db_connector()
+####################
+
+# User-Agent header for API requests
 HEADERS = {"User-Agent": os.getenv("USER_AGENT")}
 
 # Returns the latitude and longitude of a city based on city name
