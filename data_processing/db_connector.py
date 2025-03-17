@@ -81,7 +81,7 @@ class DBConnector:
 def create_db_connector():
     """
     Factory function to create a DBConnector with a live connection pool.
-    This is where you read environment variables and initialize the pool.
+    Reads environment variables and initializes the pool.
     """
     DB_USER = os.getenv("POSTGRES_USER")
     DB_PASSWORD = os.getenv("POSTGRES_PASSWORD")

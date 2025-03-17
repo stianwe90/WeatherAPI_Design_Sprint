@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VFnsGXB97HHv1ek6Yt3ft9uiXpAgxJidic/iyLAsjuZ9oxVZUVEd2uA20Yq0+1rGsMQXe+X3BTD3llWY5qL1sQ==",
+  "dgSpecHash": "wseWdu+b+9VxrgcfsxhoP/x2HepgtsKJaH3QQys8TTtKLWsqBvtZ/3lN55Le4Sjny4d4pZLCz2BP0PKgk8ifMw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\StianWærsland\\Documents\\GitHub\\TM\\WeatherAPI_Design_Sprint\\tests\\WeatherAPI.Tests\\WeatherAPI.Tests.csproj",
+  "projectFilePath": "c:\\Users\\StianWærsland\\Documents\\GitHub\\TM\\WeatherAPI_Design_Sprint\\tests\\WeatherAPI.Tests\\WeatherAPI.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\StianWærsland\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\StianWærsland\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",

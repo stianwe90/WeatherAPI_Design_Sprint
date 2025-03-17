@@ -8553,11 +8553,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\StianWærsland\\Documents\\GitHub\\TM\\WeatherAPI_Design_Sprint\\tests\\WeatherAPI.Tests\\WeatherAPI.Tests.csproj",
+      "projectUniqueName": "c:\\Users\\StianWærsland\\Documents\\GitHub\\TM\\WeatherAPI_Design_Sprint\\tests\\WeatherAPI.Tests\\WeatherAPI.Tests.csproj",
       "projectName": "WeatherAPI.Tests",
-      "projectPath": "C:\\Users\\StianWærsland\\Documents\\GitHub\\TM\\WeatherAPI_Design_Sprint\\tests\\WeatherAPI.Tests\\WeatherAPI.Tests.csproj",
+      "projectPath": "c:\\Users\\StianWærsland\\Documents\\GitHub\\TM\\WeatherAPI_Design_Sprint\\tests\\WeatherAPI.Tests\\WeatherAPI.Tests.csproj",
       "packagesPath": "C:\\Users\\StianWærsland\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\StianWærsland\\Documents\\GitHub\\TM\\WeatherAPI_Design_Sprint\\tests\\WeatherAPI.Tests\\obj\\",
+      "outputPath": "c:\\Users\\StianWærsland\\Documents\\GitHub\\TM\\WeatherAPI_Design_Sprint\\tests\\WeatherAPI.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\StianWærsland\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -8572,8 +8572,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\StianWærsland\\Documents\\GitHub\\TM\\WeatherAPI_Design_Sprint\\WeatherAPI\\WeatherAPI.csproj": {
-              "projectPath": "C:\\Users\\StianWærsland\\Documents\\GitHub\\TM\\WeatherAPI_Design_Sprint\\WeatherAPI\\WeatherAPI.csproj"
+            "c:\\Users\\StianWærsland\\Documents\\GitHub\\TM\\WeatherAPI_Design_Sprint\\WeatherAPI\\WeatherAPI.csproj": {
+              "projectPath": "c:\\Users\\StianWærsland\\Documents\\GitHub\\TM\\WeatherAPI_Design_Sprint\\WeatherAPI\\WeatherAPI.csproj"
             }
           }
         }

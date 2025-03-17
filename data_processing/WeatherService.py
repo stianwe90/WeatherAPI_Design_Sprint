@@ -14,7 +14,7 @@ load_dotenv()  # Load environment variables
 app = Flask(__name__)
 limiter = Limiter(get_remote_address, app=app, default_limits=["10 per minute"])
 
-# Create a db connector
+# Create a DBconnector instance
 db_connector = create_db_connector()
 
 HEADERS = {"User-Agent": os.getenv("USER_AGENT")}
