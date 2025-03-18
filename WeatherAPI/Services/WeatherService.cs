@@ -7,7 +7,7 @@ public class WeatherService : IWeatherService
 {
     private readonly HttpClient _client;
 
-    public WeatherService(IHttpClientFactory clientFactory)
+    public WeatherService(IHttpClientFactory clientFactory) // Public constructor for WeatherService
     {
         _client = clientFactory.CreateClient("WeatherApiClient");
     }

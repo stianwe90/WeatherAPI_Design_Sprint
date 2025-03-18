@@ -17,15 +17,15 @@ limiter = Limiter(get_remote_address, app=app, default_limits=["10 per minute"])
 #logging configuration
 logger.basicConfig(level=os.getenv("LOGLEVEL", "INFO"))
 
-# Create a DBconnector instance
-# Class for connecting to the database
+# Create a DBconnector instance using live connection pool
+# Explanation: The DBConnector abstracts away pool management and database operations.
 db_connector = create_db_connector()
 ####################
 
 # User-Agent header for API requests
 HEADERS = {"User-Agent": os.getenv("USER_AGENT")}
 
-# Returns the latitude and longitude of a city based on city name
+# Explanation: Retrieve latitude and longitude for the given city using OpenStreetMap
 def get_coordinates(city):
     """ Convert city name to latitude and longitude """
     url = f"https://nominatim.openstreetmap.org/search?city={city}&format=json&limit=1"
@@ -40,7 +40,7 @@ def get_coordinates(city):
 @app.route("/weather/current", methods=["GET"])
 @limiter.limit("10 per minute")
 def current_weather():
-    """Fetch current weather from API or DB cache."""
+    """Fetch current weather from the API or return cached data from the database."""
     location = request.args.get("location")
     if not location:
         logger.warning("Location parameter missing in request.")
@@ -52,11 +52,13 @@ def current_weather():
         logger.warning("Invalid location provided: %s", location)
         return jsonify({"error": "Invalid location"}), 400
 
+    # Explanation: Attempt to retrieve cached data if available and recent.
     cached_data = db_connector.get_recent_data(location)
     if cached_data:
         logger.info("Returning cached data for location: %s", location)
         return jsonify(cached_data)
 
+    # Explanation: No cached data - fetching from external weather API.
     url = f"https://api.met.no/weatherapi/locationforecast/2.0/compact?lat={lat}&lon={lon}"
     try:
         response = requests.get(url, headers=HEADERS)
@@ -68,12 +70,12 @@ def current_weather():
     weather_data = response.json()
     logger.info("Fetched new weather data for location: %s", location)
 
-    # Store in PostgreSQL
+    # Explanation: Save the new weather data into the database.
     try:
         db_connector.insert_weather_data(location, weather_data)
     except Exception as e:
         logger.exception("Failed to insert weather data into DB for location: %s", location)
-        # Depending on your needs, you might return an error or simply log it and continue
+        # Depending on needs, you might return an error or simply log and continue.
 
     return jsonify(weather_data)
 

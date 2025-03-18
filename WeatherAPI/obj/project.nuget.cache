@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FnqkKxDWNV2bbv0TXoTgH/++evLJ6LanjNwyZ4WqHPcbWK255eu+sRe4jq5g2ktssIeEYQLp0WyQQoIlYWeVbg==",
+  "dgSpecHash": "KP8wauAESed42oO5KcjBx+o2x1Y2tgwqu2w9zlu4SIDZdl5vgnA8bLfryaRyEvh85f27KiWjfiA/3/2nri80tw==",
   "success": true,
-  "projectFilePath": "c:\\Users\\StianWærsland\\Documents\\GitHub\\TM\\WeatherAPI_Design_Sprint\\WeatherAPI\\WeatherAPI.csproj",
+  "projectFilePath": "C:\\Users\\StianWærsland\\Documents\\GitHub\\TM\\WeatherAPI_Design_Sprint\\WeatherAPI\\WeatherAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\StianWærsland\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.13\\microsoft.aspnetcore.openapi.8.0.13.nupkg.sha512",
     "C:\\Users\\StianWærsland\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",

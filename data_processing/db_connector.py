@@ -7,14 +7,17 @@ from dotenv import load_dotenv
 
 load_dotenv()  # Load environment variables
 
+# DBConnector class encapsulates database operations using a connection pool.
 class DBConnector:
     def __init__(self, db_pool):
-        self.db_pool = db_pool
+        self.db_pool = db_pool  # Explanation: Store the connection pool that will be used for all DB operations.
 
     def get_db_connection(self):
         """Retrieve a connection from the pool."""
         try:
-            return self.db_pool.getconn()
+            conn = self.db_pool.getconn()
+            # Explanation: Successfully retrieved a connection from the pool.
+            return conn
         except Exception as e:
             logger.exception(f"Failed to get connection: {e}")
             return None
@@ -32,7 +35,7 @@ class DBConnector:
         conn = self.get_db_connection()
         if not conn:
             return
-        logger.info("db connection retrieved")
+        logger.info("db connection retrieved for inserting data")
         try:
             cursor = conn.cursor()
             cursor.execute(
@@ -68,7 +71,7 @@ class DBConnector:
             data = cursor.fetchone()
             cursor.close()
             if data:
-                logger.info("Data < 10 min old, returning from db")
+                logger.info("Data < 10 min old, returning cached data")
                 return data[0]
             else:
                 return None
@@ -78,10 +81,11 @@ class DBConnector:
         finally:
             self.release_db_connection(conn)
 
+# Factory function to create a DBConnector instance with a live connection pool.
 def create_db_connector():
     """
-    Factory function to create a DBConnector with a live connection pool.
-    Reads environment variables and initializes the pool.
+    Reads environment variables, creates a connection pool and returns a DBConnector.
+    Explanation: Centralizes DB configuration and connection pool initialization.
     """
     DB_USER = os.getenv("POSTGRES_USER")
     DB_PASSWORD = os.getenv("POSTGRES_PASSWORD")

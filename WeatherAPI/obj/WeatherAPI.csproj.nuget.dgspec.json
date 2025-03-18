@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\StianWærsland\\Documents\\GitHub\\TM\\WeatherAPI_Design_Sprint\\WeatherAPI\\WeatherAPI.csproj": {}
+    "C:\\Users\\StianWærsland\\Documents\\GitHub\\TM\\WeatherAPI_Design_Sprint\\WeatherAPI\\WeatherAPI.csproj": {}
   },
   "projects": {
-    "c:\\Users\\StianWærsland\\Documents\\GitHub\\TM\\WeatherAPI_Design_Sprint\\WeatherAPI\\WeatherAPI.csproj": {
+    "C:\\Users\\StianWærsland\\Documents\\GitHub\\TM\\WeatherAPI_Design_Sprint\\WeatherAPI\\WeatherAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\StianWærsland\\Documents\\GitHub\\TM\\WeatherAPI_Design_Sprint\\WeatherAPI\\WeatherAPI.csproj",
+        "projectUniqueName": "C:\\Users\\StianWærsland\\Documents\\GitHub\\TM\\WeatherAPI_Design_Sprint\\WeatherAPI\\WeatherAPI.csproj",
         "projectName": "WeatherAPI",
-        "projectPath": "c:\\Users\\StianWærsland\\Documents\\GitHub\\TM\\WeatherAPI_Design_Sprint\\WeatherAPI\\WeatherAPI.csproj",
+        "projectPath": "C:\\Users\\StianWærsland\\Documents\\GitHub\\TM\\WeatherAPI_Design_Sprint\\WeatherAPI\\WeatherAPI.csproj",
         "packagesPath": "C:\\Users\\StianWærsland\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\StianWærsland\\Documents\\GitHub\\TM\\WeatherAPI_Design_Sprint\\WeatherAPI\\obj\\",
+        "outputPath": "C:\\Users\\StianWærsland\\Documents\\GitHub\\TM\\WeatherAPI_Design_Sprint\\WeatherAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\StianWærsland\\AppData\\Roaming\\NuGet\\NuGet.Config"
