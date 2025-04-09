@@ -1,5 +1,5 @@
 # WeatherAPI Project
-This project demonstrates an end-to-end pipeline from API ingestion to API exposure using a weather data service. The system ingests weather data from api.met.no and processes it for consumption via a custom-built REST API. 
+Note: This is not a finalized product, but rather a technical showcase built over 2 weeks to demonstrate my understanding of how different systems and APIs interact. The focus is on building a functional pipeline — from external API ingestion to internal processing and custom API exposure — as a way to explore system integration and full-stack data handling.
 
 ## Overview
 The project is divided into two main components:
